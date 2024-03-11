@@ -6,6 +6,7 @@ import moment from 'moment';
 const Countdown = ({targetDate}) => {
   const [timeRemaining, setTimeRemaining] = useState(moment.duration());
 
+  useEffect(() => {}, []);
   useEffect(() => {
     const interval = setInterval(() => {
       const now = moment();
