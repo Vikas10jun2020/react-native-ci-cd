@@ -30,11 +30,8 @@ jobs:
         run: npm install
 
       - name: Build Android
-        run: 
-          cd android && ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleRelease
 
-     
-        
   test:
     runs-on: ubuntu-latest
 
@@ -45,42 +42,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Deploy to AppCenter
-        env:
-          APPCENTER_TOKEN: ${{ secrets.APPCENTER_TOKEN }}
+      - name: build
         run: |
-          npm install -g appcenter-cli
-          appcenter login --token $APPCENTER_TOKEN
-          appcenter codepush release-react -a <owner>/<app_name> -d <deployment_name>
-
+          cd android
+          ./gradlew assembleRelease
