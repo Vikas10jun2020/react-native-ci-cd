@@ -56,12 +56,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '17'
-
       - name: Grant execute permission to gradlew
         run: cd android && chmod +x gradlew
 
