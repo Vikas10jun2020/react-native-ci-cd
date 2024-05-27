@@ -5,7 +5,7 @@ import Countdown from './src/screens/Countdown';
 
 const App = () => {
   const targetDate = '2024-02-28T17:40:00';
-
+const d=null
   return (
     <View style={styles.container}>
       <Countdown targetDate={targetDate} />
