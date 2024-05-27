@@ -45,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: app/app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
