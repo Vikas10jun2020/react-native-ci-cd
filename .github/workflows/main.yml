@@ -38,6 +38,12 @@ jobs:
       - name: Grant execute permission to gradlew
         run: cd android &&  chmod +x gradlew
 
+      - name: Build Android
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+
       - name: Upload Android build artifacts
         uses: actions/upload-artifact@v2
         with:
